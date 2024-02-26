@@ -1,20 +1,29 @@
-import { useState } from "react"
-const initialState = []
+import {
+  addTask,
+  deleteTask,
+  updateTask,
+} from "../data/taskReducer/taskReducer";
+import store from "../data/store";
+import { useState } from "react";
+
 export const useTaskState = () => {
-    const [state, setState] = useState(initialState)
-    const addTask = (task) => {
-        setState([...state, task])
-    }
-    const deleteTask = (id) => {
-        setState(state.filter(item => item.id !== id))
-    }
-    const updateTask = (task) => {
-        setState([...state.filter(item => item.id !== id), task])
-    }
+  const { dispatch, getState } = store;
+  const [tasks, setTaskList] = useState(getState().task);
 
-    const getTask = (id) => {
-        return state.filter(item => item.id === id)
-    }
+  const AddTask = (task) => {
+    dispatch(addTask(task));
+    setTaskList(getState().task);
+  };
 
-    return {state, getTask, addTask, updateTask, deleteTask}
-}
+  const DeleteTask = (id) => {
+    dispatch(deleteTask(id));
+    setTaskList(getState().task);
+  };
+
+  const UpdateTask = (task) => {
+    dispatch(updateTask(task));
+    setTaskList(getState().task);
+  };
+
+  return { tasks, AddTask, UpdateTask, DeleteTask };
+};

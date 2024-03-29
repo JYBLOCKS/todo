@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
 import { useTaskState } from "../hooks/useTaskState";
+import { UlComponent } from "../components/Links/UlComponent.jsx";
+import { LiComponent } from "../components/Links/LiComponent.jsx";
 
 export const Home = () => {
   const { tasks, DeleteTask } = useTaskState();
-  
 
   return (
     <>
+      <UlComponent>
+        <LiComponent>home</LiComponent>
+        <LiComponent>add</LiComponent>
+        <LiComponent>update</LiComponent>
+      </UlComponent>
       <div className="container">
         <div className="d-flex justify-content-between">
           <h2 className="col-4 mt-4">Crud App</h2>

@@ -1,6 +1,6 @@
-import { Home } from "./pages/Home.jsx";
-import { AddTask } from "./pages/AddTask.jsx";
-import { UpdateTask } from "./pages/UpdateTask.jsx";
+import { Home } from "./pages/Home";
+import { AddTask } from "./pages/AddTask";
+import { UpdateTask } from "./pages/UpdateTask";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
